@@ -7,7 +7,8 @@ import Shop from './pages/Shop'
 import LoginSignup from './pages/LoginSignup'
 import Product from './pages/Product'
 import ShopCategory from './pages/ShopCategory'
-
+import Footer from './components/Footer'
+// to select a lot of things at once you can use ctrl+F2
 function App() {
   const [count, setCount] = useState(0)
 
@@ -27,6 +28,7 @@ function App() {
          <Route path='/cart' element={<Cart/>} />
          <Route path='/login' element={<LoginSignup />}/>
       </Routes>
+      <Footer />
       </BrowserRouter>
     </div>
   )
