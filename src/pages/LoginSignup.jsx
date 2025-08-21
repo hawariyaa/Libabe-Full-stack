@@ -1,9 +1,28 @@
-import React from 'react'
+import react from 'react'
+import '../css/loginsingup.css';
 
-function LoginSignup() {
+const LoginSignup = () => {
   return (
-    <div>LoginSignup</div>
-  )
-}
+    <div className="login_signup">
+      <div className="login_signup-container">
+        <h1>Sign Up</h1>
+        <div className="login_signup-feilds">
+          <input type="text" placeholder="Your Name" />
+          <input type="email" placeholder="Email Address" />
+          <input type="password" placeholder="Password" />
+          <button>Continue</button>
+        </div>
 
-export default LoginSignup
+        <p className="login_signup-login">
+          Already have an account? <span>Login here</span>
+        </p>
+        <div className="login_signup-agree">
+          <input type="checkbox" name="" id="" />
+          <p>I agree to the Terms and Privacy Policy</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default LoginSignup;

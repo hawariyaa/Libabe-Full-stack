@@ -15,8 +15,8 @@ function Navbar() {
       </div>
       <ul className="nav-menu">
         <li onClick={()=>{setMenu('shop')}}><Link to="/">Shop</Link> {Menu=== "shop" ? <hr/>: <></>}</li>
-        <li onClick={()=>{setMenu('Men')}}><Link to ="/men">Men</Link>{Menu=== 'Men' ? <hr/>: <></>}</li>
-        <li onClick={()=>{setMenu('Women')}}><Link to="/women">women</Link>{Menu=== 'Women' ? <hr/>:<> </>}</li>
+        <li onClick={()=>{setMenu('Men')}}><Link to ="/mens">Men</Link>{Menu=== 'Men' ? <hr/>: <></>}</li>
+        <li onClick={()=>{setMenu('Women')}}><Link to="/womens">women</Link>{Menu=== 'Women' ? <hr/>:<> </>}</li>
         <li onClick={()=>{setMenu('Kids')}}><Link to="/kids">Kids</Link>{Menu=== 'Kids' ? <hr/>: <></>}</li>
       </ul>
       <div className="nav-login-cart">
