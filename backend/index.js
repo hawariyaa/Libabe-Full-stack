@@ -47,3 +47,55 @@ app.post("/upload", upload.single('product'), (req,res)=>{
     })
 })
 
+
+// schema for creating product
+const product = mongoose.model("product", {
+    id:{
+        type: Number,
+        required: true, 
+    },
+    name: {
+        type:String,
+        required: true, // if we tried to upload a product without a name it won't be uploaded
+    },
+    category: {
+        type:String,
+        required: true,
+    },
+    new_price:{
+        type: Number,
+        required: true,
+    },
+    old_price: {
+        type: Number,
+        required: true,
+    },
+    date:{
+        type: Date,
+        default: Date.now,
+    },
+    avialble: {
+        type: Boolean,
+        default: true,
+    },
+})
+app.post('/addproduct', async (req,res) => {
+    const product = new product({
+        id:req.body.id,
+        name:req.body.name,
+        image:req.body.image,
+        category:req.body.category,
+        new_price:req.body.new_price,
+        old_price:req.body.old_price,
+    });
+    console.log(product);
+    await product.save();
+    console.log("saved");
+    res.json({
+        success:true,
+        name:req.body.name,
+    })
+})
+
+
+
