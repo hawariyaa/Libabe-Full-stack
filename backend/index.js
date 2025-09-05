@@ -10,10 +10,12 @@ app.use(express.json());
 app.use(cors());
 
 // creating a mongodb atlas database
-// Database connection with mongodb
-mongoose.connect('mongodb+srv://hawipaul:hawipaul@cluster0.t49bxrz.mongodb.net/e-commerce');
+// Database connection with mongodb, our database is connected to the express server
+mongoose.connect('mongodb+srv://hawipaul:hawipaul@cluster0.t49bxrz.mongodb.net/e-commerce')
+.then(()=> console.log("connected successful"))
+.catch(err => console.error("error is:", err));
 // updated the password part to my database password, mongodb+srv://hawipaul:<db_password>@cluster0.t49bxrz.mongodb.net/
-// also added a path where we will store data of our application
+// also added a path where we will store data of our application(the database name in the mongo db atlas)
 
 
 // API Endpoint Creation
