@@ -8,11 +8,12 @@ const cors = require("cors");
 const path = require("path");
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // creating a mongodb atlas database
 // Database connection with mongodb, our database is connected to the express server
-mongoose.connect('mongodb+srv://hawipaul:hawipaul@cluster0.t49bxrz.mongodb.net/e-commerce')
+mongoose.connect('mongodb+srv://hawip:hawip@cluster0.t49bxrz.mongodb.net/e-commerce')
 .then(()=> console.log("connected successful"))
 .catch(err => console.error("error is:", err));
 // updated the password part to my database password, mongodb+srv://hawipaul:<db_password>@cluster0.t49bxrz.mongodb.net/
@@ -52,7 +53,7 @@ app.post("/upload", upload.single('product'), (req,res)=>{
 
 
 // schema for creating product
-const product = mongoose.model("product", {
+const Product = mongoose.model("product", {
     id:{
         type: Number,
         required: true, 
@@ -77,14 +78,28 @@ const product = mongoose.model("product", {
         type: Date,
         default: Date.now,
     },
-    avialble: {
+    image:{
+        type:String,
+        required:true,
+    },
+    available: {
         type: Boolean,
         default: true,
     },
 })
 app.post('/addproduct', async (req,res) => {
-    const product = new product({
-        id:req.body.id,
+    let products = await Product.find({});
+    let id;
+    if(products.length > 0){
+        let last_product_array = products.slice(-1);
+        let last_product = last_product_array[0];
+        id = last_product.id; 
+    }
+    else{
+        id=1;
+    }
+    const product = new Product({
+        id:id,
         name:req.body.name,
         image:req.body.image,
         category:req.body.category,
