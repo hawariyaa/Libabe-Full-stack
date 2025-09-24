@@ -88,12 +88,11 @@ const Product = mongoose.model("product", {
     },
 })
 app.post('/addproduct', async (req,res) => {
-    let products = await Product.find({});
+    let products = await Product.findOne().sort({id: -1});
     let id;
-    if(products.length > 0){
-        let last_product_array = products.slice(-1);
-        let last_product = last_product_array[0];
-        id = last_product.id; 
+    if(products){
+        let last_product = products;
+        id = last_product.id + 1; 
     }
     else{
         id=1;
@@ -115,5 +114,21 @@ app.post('/addproduct', async (req,res) => {
     })
 })
 
+//creating API for removing products
+app.post('/removeproduct', async(req, res)=> {
+    let removed = await Product.findOneAndDelete({id:req.body.id});
+    console.log("Removed");
+    res.json({
+        success:true,
+        name:removed.name
+    })
+})
+
+//creating API for getting all products
+app.get('/allproducts', async(req, res)=>{
+    let products = await Product.find({});
+    console.log("All products fetched");
+    res.send(products);
+})
 
 
