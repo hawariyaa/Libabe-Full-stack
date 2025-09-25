@@ -124,7 +124,7 @@ app.post('/removeproduct', async(req, res)=> {
     })
 })
 
-//creating API for getting all products
+//creating API for getting all products, this will return all the objects(json) file inside an array.
 app.get('/allproducts', async(req, res)=>{
     let products = await Product.find({});
     console.log("All products fetched");
