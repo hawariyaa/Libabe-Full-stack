@@ -1,4 +1,5 @@
-const port = 4000;
+require("dotenv").config();
+const port = process.env.PORT;
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -7,13 +8,14 @@ const multer = require("multer");
 const cors = require("cors");
 const path = require("path");
 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // creating a mongodb atlas database
 // Database connection with mongodb, our database is connected to the express server
-mongoose.connect('mongodb+srv://hawip:hawip@cluster0.t49bxrz.mongodb.net/e-commerce')
+mongoose.connect(process.env.Mongodb_URI)
 .then(()=> console.log("connected successful"))
 .catch(err => console.error("error is:", err));
 // updated the password part to my database password, mongodb+srv://hawipaul:<db_password>@cluster0.t49bxrz.mongodb.net/
