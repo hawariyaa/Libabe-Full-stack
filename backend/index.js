@@ -15,7 +15,7 @@ app.use(cors());
 
 // creating a mongodb atlas database
 // Database connection with mongodb, our database is connected to the express server
-mongoose.connect(process.env.Mongodb_URI)
+mongoose.connect('mongodb+srv://hawipaul:hawipaul@cluster0.tjbn4v8.mongodb.net/e-commerce1')
 .then(()=> console.log("connected successful"))
 .catch(err => console.error("error is:", err));
 // updated the password part to my database password, mongodb+srv://hawipaul:<db_password>@cluster0.t49bxrz.mongodb.net/
@@ -29,7 +29,7 @@ app.get('/', (req,res)=>{
 
 app.listen(port,(error)=>{
     if(!error){
-        console.log('Server Running on port'+port);
+        console.log('Server Running on port '+port);
     }
     else{
         console.log('Error: '+error);
