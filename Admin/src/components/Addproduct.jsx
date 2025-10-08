@@ -18,7 +18,7 @@ function Addproduct() {
   const ImageHandler = (e) =>{
     setImage(e.target.files[0]);
   }
-  //bescally what its doing is is its setting the value that has been inputed to the productDetails right
+  //bescally what its doing is is its setting the value that has been inputed to the productDetails 
   //...productDetails → copies the existing state object.[e.target.name] → dynamically updates the field (e.g. name, old_price, category).
   //e.target.value → the new value from the input/select.
   const changeHandler = (e) =>{
@@ -57,7 +57,7 @@ function Addproduct() {
 
   }
   return (
-    
+     
       <div className="add-product">
         <div className="addproduct-itemfield">
           <p>Product Title</p>
@@ -86,7 +86,7 @@ function Addproduct() {
           <label htmlFor="file-input">
             <img src={image?URL.createObjectURL(image):upload_area} className='addproduct-tumbnail' alt="" />
           </label>
-          <input onChange={ImageHandler} type="file" name='image' id='file-input' hidden />
+          <input onChange={ImageHandler} type="file" name='product' id='file-input' hidden />
         </div>
         <button onClick={()=>{Add_Product()}} className='product-btn'>ADD</button>
       </div>
